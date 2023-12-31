@@ -1,7 +1,7 @@
 import { getContainerItem } from "./getContainerItem";
 import { mintDft } from "./mintDft";
 
-mintDft('quark', 200, {
+mintDft('quark', 20000, {
     satsbyte: 100
 })
 
