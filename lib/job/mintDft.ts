@@ -1,6 +1,6 @@
 import { Atomicals, ElectrumApi } from "..";
 import { validateWalletStorage } from "../utils/validate-wallet-storage";
-import { resolveWalletAliasNew } from "./utils";
+import { delay, resolveWalletAliasNew } from "./utils";
 
 
 export const mintDft = async (ticker: string, count: number, options: any = {}) => {
@@ -17,6 +17,7 @@ export const mintDft = async (ticker: string, count: number, options: any = {}) 
           disableMiningChalk: options.disablechalk,
         }, walletRecord.address, ticker, fundingRecord.WIF);
         console.log(iterator, result)
+        delay(2000)
         
     }
 }
