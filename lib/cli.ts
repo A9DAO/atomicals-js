@@ -56,6 +56,7 @@ function printFailure(data: any) {
 function handleResultLogging(result: any, showDonation?: boolean) {
   if (!result || !result.success || !result.data) {
     printFailure(result);
+    process.exit(1);
   } else {
     printSuccess(result.data, showDonation);
   }
@@ -331,7 +332,7 @@ program.command('script-address')
     console.log('Address:', result)
     console.log(`------------------------------------------------------`);
   });
-
+ 
 program.command('outpoint-compact')
   .description('Decodes hex outpoint to compact location id form')
   .argument('<hex>', 'string')
@@ -901,6 +902,16 @@ program.command('find-containers')
     }
   });
 
+/*
+program.command('diff')
+  .action(async (options) => {
+    const a = [
+    ]
+    const b = []
+    let diffs = b.filter(x => !a.includes(x));
+    console.log(JSON.stringify(diffs, null, 2))
+  });*/
+  
 /////////////////////////////////////////////////////////////////////////////////////////////
 // Modify, Updates, Events, Delete...
 /////////////////////////////////////////////////////////////////////////////////////////////
@@ -1549,7 +1560,7 @@ program.command('init-dft')
         parent: options.parent,
         parentOwner: parentOwnerRecord,
         disableMiningChalk: options.disablechalk,
-      }, file, walletRecord.address, requestTicker, mintAmount, maxMints, mintHeight, mintbitworkc, mintbitworkc, fundingRecord.WIF);
+      }, file, walletRecord.address, requestTicker, mintAmount, maxMints, mintHeight, mintbitworkc, options.mintbitworkr, fundingRecord.WIF);
       handleResultLogging(result);
     } catch (error) {
       console.log(error);
